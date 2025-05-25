@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://c1ldt6vv0ris6"]
+
+[ext_resource type="Shader" uid="uid://dbucxfqawt6ac" path="res://display.gdshader" id="1_0e48y"]
+[ext_resource type="Script" uid="uid://ddvt6u3smdyes" path="res://imageedit.gd" id="1_wtcfe"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_epypp"]
+shader = ExtResource("1_0e48y")
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_0hol4"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_epypp")
+position = Vector2(576, 324)
+scale = Vector2(1152, 648)
+texture = SubResource("PlaceholderTexture2D_0hol4")
+script = ExtResource("1_wtcfe")

@@ -1,0 +1,39 @@
+[gd_scene load_steps=8 format=3 uid="uid://c1ldt6vv0ris6"]
+
+[ext_resource type="Shader" uid="uid://dbucxfqawt6ac" path="res://display.gdshader" id="1_0e48y"]
+[ext_resource type="Script" uid="uid://ddvt6u3smdyes" path="res://imageedit.gd" id="1_wtcfe"]
+[ext_resource type="Texture2D" uid="uid://cvuitbg5gfy0k" path="res://Illustration.png" id="2_0hol4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_epypp"]
+shader = ExtResource("1_0e48y")
+shader_parameter/angle = 1.25
+shader_parameter/size = 40.0
+
+[sub_resource type="Curve" id="Curve_epypp"]
+_data = [Vector2(0.515957, 0.404494), 0.0, 0.0, 0, 0, Vector2(0.867021, 0.853933), 0.0, 0.0, 0, 0, Vector2(0.994681, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q6r6c"]
+shader = ExtResource("1_0e48y")
+shader_parameter/angle = 0.0
+shader_parameter/size = 0.0
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_kdubu"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_epypp")
+position = Vector2(263, 0)
+scale = Vector2(6.48, 6.48)
+texture = ExtResource("2_0hol4")
+centered = false
+script = ExtResource("1_wtcfe")
+curve = SubResource("Curve_epypp")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_q6r6c")
+position = Vector2(1011.44, 342.063)
+texture = SubResource("PlaceholderTexture2D_kdubu")
