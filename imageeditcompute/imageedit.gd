@@ -52,5 +52,6 @@ func _ready():
 		 false, Image.FORMAT_RGBAF, output_bytes)
 	
 	var finaltex := ImageTexture.create_from_image(finalImage)
+	print(finaltex.get_format())
 	#self.texture = finaltex
 	material.set("shader_parameter/fluid", finaltex)
