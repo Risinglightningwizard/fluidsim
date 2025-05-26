@@ -1,7 +1,8 @@
 shader_type canvas_item;
 uniform sampler2D fluid;
 uniform float angle : hint_range(0.0, 2.0, 0.01);
-uniform float size : hint_range(10.0, 40.0, 0.01);
+uniform float size : hint_range(10.0, 60.0, 0.01);
+uniform float maxValue = 1.0;
 void fragment() {
 	
 	//Isolate which cell the arrow is in and find center
@@ -12,8 +13,8 @@ void fragment() {
 	
 	vec4 color = texture(fluid,cellNumCenter);
 	float rotation = atan(color.g,color.r) + 3.14159/4.0;
-	float magnitude = 1.0/sqrt(color.r*color.r+color.g*color.g);
-	float finalSize = magnitude * size;
+	float magnitude = (1.0/sqrt(color.r*color.r+color.g*color.g))/maxValue;
+	float finalSize = magnitude * size*maxValue;
 	
 	//set rotation and area for rotation and shift
 	vec2 pixelCellLoc = vec2(UV.x-cellNumCenter.x,UV.y-cellNumCenter.y);
@@ -35,6 +36,6 @@ void fragment() {
 		COLOR = arrowRotate;
 	}
 	else{
-		COLOR = texture(fluid,cellNumCenter);
+		COLOR = vec4(.0,.0,.0,.0);
 	}
 }

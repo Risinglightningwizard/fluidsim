@@ -52,6 +52,7 @@ func _ready():
 		 false, Image.FORMAT_RGBAF, output_bytes)
 	
 	var finaltex := ImageTexture.create_from_image(finalImage)
-	print(finaltex.get_format())
-	#self.texture = finaltex
+	var maxValue : float = Array(output).max()
+	material.set("shader_parameter/maxValue", maxValue)
+	print(maxValue)
 	material.set("shader_parameter/fluid", finaltex)

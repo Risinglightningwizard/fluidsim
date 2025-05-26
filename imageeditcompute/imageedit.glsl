@@ -10,6 +10,9 @@ layout(set = 0, binding = 0, rgba32f) uniform image2D OUTPUT_TEXTURE;
 void main() {
     ivec2 texel = ivec2(gl_GlobalInvocationID.xy);
     ivec2 dimensions = imageSize(OUTPUT_TEXTURE);
-    vec4 color = vec4(float(texel.x)/dimensions.x,float(texel.y)/dimensions.y,-3,1);
+    vec2 fromCenter = vec2 (float(texel.x)-4.5, float(texel.y)-4.5);
+
+    //vec4 color = vec4(float(texel.x)/dimensions.x,float(texel.y)/dimensions.y,0,1);
+    vec4 color = vec4(fromCenter.y, fromCenter.x,0,1);
     imageStore(OUTPUT_TEXTURE, texel, color);
 }
